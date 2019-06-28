@@ -23,3 +23,8 @@ services:
                 - MYSQL_USER=kelvin
                 - MYSQL_PASSWORD=somestrongpassword
                 - MYSQL_DATABASE=db_ghost
+                volumes:
+                - persist_volume:/var/lib/mysql
+
+volumes:
+        persist_volume:
