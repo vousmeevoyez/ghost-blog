@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+        ghost:
+                image: ghost:latest
+                restart: unless-stopped
+                ports:
+                - 2368:2368
+                environment:
+                - database__client=mysql
+                - database__connection__host=db
+                - database__connection__user=kelvin
+                - database__connection__password=somestrongpassword
+                - database__connection__database=db_ghost
+                depends_on:
+                - db
+
+        db:
+                image: mysql:5.7.26
+                restart: unless-stopped
+                environment:
+                - MYSQL_ROOT_PASSWORD=asdawq123gxzc
+                - MYSQL_USER=kelvin
+                - MYSQL_PASSWORD=somestrongpassword
+                - MYSQL_DATABASE=db_ghost
